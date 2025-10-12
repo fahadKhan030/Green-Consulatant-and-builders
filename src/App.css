@@ -8,7 +8,7 @@
 /* 👇 Global font setup */
 body {
   font-family: "Poppins", sans-serif;
-  line-height: 1.6;
+  /* line-height: 1.6; */
 }
 
 /* 🎨 All heading styles */
