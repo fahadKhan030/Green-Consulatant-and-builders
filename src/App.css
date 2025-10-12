@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-font: #3675FF;
+  --color-light-blue: #EDF3FF;
+}
+
+/* 👇 Global font setup */
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
+
+/* 🎨 All heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--color-font);
+  margin: 10px 0;
+}
+
+/* 🖥️ Default heading sizes (desktop) */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; color: #444; }
+
+/* 📱 Responsive heading sizes */
+@media (max-width: 992px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.3rem; }
+  h5 { font-size: 1.1rem; }
+  h6 { font-size: 0.95rem; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  h4 { font-size: 1.1rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.9rem; }
+}
