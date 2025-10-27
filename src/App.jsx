@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext.jsx";
 import Header from "./Header/Header.jsx";
+import "./App.css";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -18,7 +19,9 @@ const App = () => {
 
   if (loading)
     return (
-      <div className="h-6 w-6 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
+      <div className="h-[100vh] w-[100vw] flex justify-center items-center">
+        <div className="h-6 w-6 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
+      </div>
     );
 
   return (

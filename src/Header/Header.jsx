@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import UserContext from "../UserContext.jsx";
-// import { act } from "react";
 
 const initialState = 0;
 
@@ -23,7 +22,6 @@ function reducer(state, action) {
 
 const Header = () => {
   const { user } = useContext(UserContext);
-  // const [disable, setDisable] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const auto = useRef(null);
   const [input, setInput] = useState("");
@@ -37,7 +35,17 @@ const Header = () => {
     setInput(event.target.value);
   };
 
+  const editTodo = (index) => {
+    setInput(value[index]);
+    remove(index);
+    auto.current.focus();
+  };
+
   const Click = () => {
+    if (input.trim() === "") {
+      alert("Please enter a valid input");
+      return;
+    }
     setValue([...value, input]);
     setInput("");
   };
@@ -48,7 +56,7 @@ const Header = () => {
 
   return (
     <div className=" flex items-center justify-center flex-col gap-10 text-xl font-semibold">
-      <span>Header — Welcome {user}</span>
+      <span className="text-5xl">Welcome {user}</span>
       <div className="flex flex-col gap-3">
         <div className="flex  gap-2">
           <input
@@ -68,25 +76,33 @@ const Header = () => {
         </div>
         <div className=" flex flex-col  items-center justify-between px-2 py-1 gap-2 rounded-xl">
           {value.map((val, index) => (
-            <h1
+            <h6
               key={index}
-              className="flex gap-2 bg-gray-400  rounded-2xl w-full   justify-between"
+              className="flex gap-2 bg-gray-400  rounded-2xl w-full px-2 py-1   justify-between"
             >
               <span className="mx-2">.{val}</span>
-              <button
-                className="bg-amber-50 px-2 rounded-2xl"
-                onClick={() => remove(index)}
-              >
-                R
-              </button>
-            </h1>
+              <div className="flex items-center justify-center gap-2">
+                <button
+                  className="bg-amber-50 px-2 rounded-2xl"
+                  onClick={() => remove(index)}
+                >
+                  R
+                </button>
+                <button
+                  className="bg-amber-50 px-2 rounded-2xl"
+                  onClick={() => editTodo(index)}
+                >
+                  E
+                </button>
+              </div>
+            </h6>
           ))}
         </div>
       </div>
 
       <div className="flex gap-2 ">
         <button
-          className="border  border-red-500 rounded-xl shadow-2xl shadow-black p-1"
+          className="border  border-red-500 rounded-xl shadow-2xl shadow-black px-3"
           onClick={() => dispatch({ type: "subtract" })}
           disabled={state === 0}
         >
@@ -94,7 +110,7 @@ const Header = () => {
         </button>
         <h1 className="mr-5 text-xl">Count: {state}</h1>
         <button
-          className="border  border-red-500 rounded-xl shadow-2xl shadow-black p-1"
+          className="border  border-green-500 rounded-xl shadow-2xl shadow-black px-3"
           onClick={() => dispatch({ type: "add" })}
         >
           +
