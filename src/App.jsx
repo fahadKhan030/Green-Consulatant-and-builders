@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext.jsx";
 import Header from "./Header/Header.jsx";
 import "./App.css";
+import Footer from "./Footer/Footer.jsx";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -30,6 +31,7 @@ const App = () => {
       className="flex flex-col items-center justify-center mt-10"
     >
       <Header />
+      <Footer />
       <img
         src={data.message}
         alt="Random Dog"

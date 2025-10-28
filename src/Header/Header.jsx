@@ -27,6 +27,8 @@ const Header = () => {
   const [input, setInput] = useState("");
   const [value, setValue] = useState([]);
 
+  const todos = value.length;
+
   useEffect(() => {
     auto.current.focus();
   }, []);
@@ -99,7 +101,7 @@ const Header = () => {
           ))}
         </div>
       </div>
-
+      <span>Total todos: {todos}</span>
       <div className="flex gap-2 ">
         <button
           className="border  border-red-500 rounded-xl shadow-2xl shadow-black px-3"
