@@ -15,6 +15,17 @@ const Footer = () => {
   const [state, dispatch] = useReducer(todoReducer, []);
   const [inputValue, setInputValue] = useState("");
 
+  const handleEmptyInput = () => {
+    if (inputValue.trim() === "") {
+      alert("Please enter a valid input");
+      setInputValue("");
+      return;
+    } else {
+      setInputValue("");
+    }
+    return false;
+  };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <h2>Footer</h2>
@@ -26,7 +37,9 @@ const Footer = () => {
       />
       <button
         className="mt-2 bg-orange-400 text-white px-3 py-1 rounded-sm"
-        onClick={() => dispatch({ type: "add", payload: inputValue })}
+        onClick={() =>
+          dispatch({ type: "add", payload: inputValue }, handleEmptyInput())
+        }
       >
         ADD
       </button>
