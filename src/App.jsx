@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext.jsx";
 import Header from "./Header/Header.jsx";
+import Blog from "./Blog/Blog.jsx";
 import "./App.css";
 import Footer from "./Footer/Footer.jsx";
 
@@ -37,6 +38,8 @@ const App = () => {
         alt="Random Dog"
         className="mt-4 h-50 w-50 object-cover rounded-sm ml-10"
       />
+
+      <Blog />
     </UserContext.Provider>
   );
 };
