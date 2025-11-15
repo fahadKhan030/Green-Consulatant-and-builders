@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserContext from "./UserContext.jsx";
 import Header from "./Header/Header.jsx";
-import Blog from "./Blog/Blog.jsx";
+import Blog from "./Blog/Blogs.jsx";
 import "./App.css";
 import Footer from "./Footer/Footer.jsx";
 

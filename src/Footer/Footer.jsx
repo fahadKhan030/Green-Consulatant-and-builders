@@ -29,6 +29,7 @@ const Footer = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <h2>Footer</h2>
+
       <input
         type="text"
         className="border border-orange-400 rounded-sm px-2 py-1"
