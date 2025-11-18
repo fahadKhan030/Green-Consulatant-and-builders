@@ -21,7 +21,7 @@ function reducer(state, action) {
 }
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+  const { Name } = useContext(UserContext);
   const [state, dispatch] = useReducer(reducer, initialState);
   const auto = useRef(null);
   const [input, setInput] = useState("");
@@ -58,7 +58,7 @@ const Header = () => {
 
   return (
     <div className=" flex items-center justify-center flex-col gap-10 text-xl font-semibold">
-      <span className="text-5xl">Welcome {user}</span>
+      <span className="text-5xl">Welcome {Name}</span>
       <div className="flex flex-col gap-3">
         <div className="flex  gap-2">
           <input

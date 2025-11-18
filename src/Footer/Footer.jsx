@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
+import UserContext from "../UserContext";
 
 function todoReducer(state, action) {
   switch (action.type) {
@@ -12,6 +13,7 @@ function todoReducer(state, action) {
 }
 
 const Footer = () => {
+  const { Name } = useContext(UserContext);
   const [state, dispatch] = useReducer(todoReducer, []);
   const [inputValue, setInputValue] = useState("");
 
@@ -42,7 +44,7 @@ const Footer = () => {
           dispatch({ type: "add", payload: inputValue }, handleEmptyInput())
         }
       >
-        ADD
+        Add your Todos {Name}
       </button>
 
       <div className="mt-4">
