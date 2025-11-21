@@ -34,7 +34,10 @@ const Input = () => {
             onChange={handleInput}
             className="border-black border-2 px-2 py-1 h-40 rounded-2xl"
           />
-          <button onClick={AddData} className="border border-black rounded-sm">
+          <button
+            onClick={AddData}
+            className="border-0 py-1 bg-blue-400 text-white  border-black rounded-sm"
+          >
             Add
           </button>
         </div>
