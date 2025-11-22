@@ -1,5 +1,6 @@
 import React, { useContext, useReducer, useState } from "react";
 import UserContext from "../UserContext";
+import ThemeContext from "../Theme/ThemeContext";
 
 function todoReducer(state, action) {
   switch (action.type) {
@@ -14,23 +15,35 @@ function todoReducer(state, action) {
 
 const Footer = () => {
   const { Name } = useContext(UserContext);
+  const { theme, themeToogle } = useContext(ThemeContext);
+
   const [state, dispatch] = useReducer(todoReducer, []);
   const [inputValue, setInputValue] = useState("");
 
-  const handleEmptyInput = () => {
+  const handleAdd = () => {
     if (inputValue.trim() === "") {
       alert("Please enter a valid input");
       setInputValue("");
       return;
-    } else {
-      setInputValue("");
     }
-    return false;
+    dispatch({ type: "add", payload: inputValue });
+    setInputValue("");
   };
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2>Footer</h2>
+      <h2>Footer {theme}</h2>
+
+      <button
+        onClick={themeToogle}
+        className={
+          theme === "light"
+            ? "text-black bg-white border rounded-sm px-2 py-1"
+            : "text-white bg-black border rounded-sm px-2 py-1"
+        }
+      >
+        Toggle Theme
+      </button>
 
       <input
         type="text"
@@ -38,11 +51,10 @@ const Footer = () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
+
       <button
         className="mt-2 bg-orange-400 text-white px-3 py-1 rounded-sm"
-        onClick={() =>
-          dispatch({ type: "add", payload: inputValue }, handleEmptyInput())
-        }
+        onClick={handleAdd}
       >
         Add your Todos {Name}
       </button>

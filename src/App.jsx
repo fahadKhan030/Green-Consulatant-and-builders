@@ -4,6 +4,7 @@ import Header from "./Header/Header.jsx";
 import Blog from "./Blog/Blogs.jsx";
 import "./App.css";
 import Footer from "./Footer/Footer.jsx";
+import ThemeProvider from "./Theme/ThemeProvider.jsx";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -45,43 +46,45 @@ const App = () => {
     );
 
   return (
-    <UserContext.Provider
-      value={{ Name }}
-      className="flex flex-col items-center justify-center mt-10"
-    >
-      <div
-        className={
-          hidden
-            ? "fixed flex items-center justify-center h-full top-0 right-0 backdrop-blur-3xl  w-full bg-gray-30 transform gap-2"
-            : "hidden"
-        }
+    <ThemeProvider>
+      <UserContext.Provider
+        value={{ Name }}
+        className="flex flex-col items-center justify-center mt-10"
       >
-        <div className="flex  gap-1 flex-col bg- bg-white px-9 rounded-xl py-8">
-          <input
-            type="text"
-            value={user}
-            onChange={handleNameInput}
-            className=" border h-10 border-black px-4 rounded-sm outline-0"
-            placeholder="please enter your Name"
-          />
-          <button
-            onClick={handleAddName}
-            className=" border-black px-2 h-10 bg-blue-500 text-white border-0 rounded-sm"
-          >
-            add
-          </button>
+        <div
+          className={
+            hidden
+              ? "fixed flex items-center justify-center h-full top-0 right-0 backdrop-blur-3xl  w-full bg-gray-30 transform gap-2"
+              : "hidden"
+          }
+        >
+          <div className="flex  gap-1 flex-col bg- bg-white px-9 rounded-xl py-8">
+            <input
+              type="text"
+              value={user}
+              onChange={handleNameInput}
+              className=" border h-10 border-black px-4 rounded-sm outline-0"
+              placeholder="please enter your Name"
+            />
+            <button
+              onClick={handleAddName}
+              className=" border-black px-2 h-10 bg-blue-500 text-white border-0 rounded-sm"
+            >
+              add
+            </button>
+          </div>
         </div>
-      </div>
-      <Header />
-      <Footer />
-      <img
-        src={data.message}
-        alt="Random Dog"
-        className="mt-4 h-50 w-50 object-cover rounded-sm ml-10"
-      />
+        <Header />
+        <Footer />
+        <img
+          src={data.message}
+          alt="Random Dog"
+          className="mt-4 h-50 w-50 object-cover rounded-sm ml-10"
+        />
 
-      <Blog />
-    </UserContext.Provider>
+        <Blog />
+      </UserContext.Provider>
+    </ThemeProvider>
   );
 };
 
