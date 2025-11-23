@@ -74,6 +74,11 @@ const App = () => {
               type="text"
               value={user}
               onChange={handleNameInput}
+              onKeyDown={() => {
+                if (event.key === "Enter") {
+                  handleAddName();
+                }
+              }}
               className="border h-10 border-black px-2 rounded-sm outline-0"
               placeholder="Please enter your Name"
             />
