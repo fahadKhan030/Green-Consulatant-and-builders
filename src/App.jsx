@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import UserContext from "./UserContext.jsx";
 import Header from "./Header/Header.jsx";
 import Blog from "./Blog/Blogs.jsx";
@@ -13,6 +13,8 @@ const App = () => {
   const [user, setUser] = useState("");
   const [hidden, setHidden] = useState(true);
 
+  const inputRef = useRef(null);
+
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/image/random")
       .then((res) => res.json())
@@ -22,20 +24,26 @@ const App = () => {
       });
   }, []);
 
+  // Auto-focus when modal becomes visible
+  useEffect(() => {
+    if (!hidden) {
+      inputRef.current?.focus();
+    }
+  }, [hidden]);
+
   const handleNameInput = (e) => {
     setUser(e.target.value);
-    console.log(user);
   };
 
   const handleAddName = () => {
-    setName(user);
-    setUser("");
     if (user === "") {
       alert("Please Enter your name");
-    } else {
-      setHidden(false);
+      return;
     }
-    console.log(Name);
+
+    setName(user);
+    setUser("");
+    setHidden(false);
   };
 
   if (loading)
@@ -51,31 +59,37 @@ const App = () => {
         value={{ Name }}
         className="flex flex-col items-center justify-center mt-10"
       >
+        {/* Modal */}
         <div
           className={
             hidden
-              ? "fixed flex items-center justify-center h-full top-0 right-0 backdrop-blur-3xl  w-full bg-gray-30 transform gap-2"
+              ? "fixed flex items-center justify-center h-full top-0 z-1000 right-0 backdrop-blur-3xl w-full bg-gray-30 transform gap-2"
               : "hidden"
           }
         >
-          <div className="flex  gap-1 flex-col bg- bg-white px-9 rounded-xl py-8">
+          <div className="flex gap-1 flex-col bg-white px-9 rounded-xl py-8">
+            {/* ✔ Correct ref here */}
             <input
+              ref={inputRef}
               type="text"
               value={user}
               onChange={handleNameInput}
-              className=" border h-10 border-black px-4 rounded-sm outline-0"
-              placeholder="please enter your Name"
+              className="border h-10 border-black px-2 rounded-sm outline-0"
+              placeholder="Please enter your Name"
             />
+
             <button
               onClick={handleAddName}
-              className=" border-black px-2 h-10 bg-blue-500 text-white border-0 rounded-sm"
+              className="border-black px-2 h-10 bg-blue-500 text-white border-0 rounded-sm"
             >
               add
             </button>
           </div>
         </div>
+
         <Header />
         <Footer />
+
         <img
           src={data.message}
           alt="Random Dog"
