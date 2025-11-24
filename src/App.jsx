@@ -5,6 +5,7 @@ import Blog from "./Blog/Blogs.jsx";
 import "./App.css";
 import Footer from "./Footer/Footer.jsx";
 import ThemeProvider from "./Theme/ThemeProvider.jsx";
+import Stopwatch from "./StopWatch/ShopWatch.jsx";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -100,7 +101,7 @@ const App = () => {
           alt="Random Dog"
           className="mt-4 h-50 w-50 object-cover rounded-sm ml-10"
         />
-
+        <Stopwatch />
         <Blog />
       </UserContext.Provider>
     </ThemeProvider>
