@@ -6,24 +6,16 @@ import "./App.css";
 import Footer from "./Footer/Footer.jsx";
 import ThemeProvider from "./Theme/ThemeProvider.jsx";
 import Stopwatch from "./StopWatch/ShopWatch.jsx";
+import Dogs from "./Suspence/Dogs.jsx";
 
 const App = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [data, setData] = useState(null);
+  // const [loading, setLoading] = useState(true);
   const [Name, setName] = useState("");
   const [user, setUser] = useState("");
   const [hidden, setHidden] = useState(true);
 
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/image/random")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
 
   // Auto-focus when modal becomes visible
   useEffect(() => {
@@ -47,13 +39,6 @@ const App = () => {
     setHidden(false);
   };
 
-  if (loading)
-    return (
-      <div className="h-full w-full flex justify-center items-center">
-        <div className="h-6 w-6 border-t-2 border-b-2 border-black animate-spin rounded-full"></div>
-      </div>
-    );
-
   return (
     <ThemeProvider>
       <UserContext.Provider
@@ -64,11 +49,11 @@ const App = () => {
         <div
           className={
             hidden
-              ? "fixed flex items-center justify-center h-full top-0 z-1000 right-0 backdrop-blur-3xl w-full bg-gray-30 transform gap-2"
+              ? "fixed flex items-center justify-center h-full top-0 -z-90 right-0 backdrop-blur-3xl w-full bg-gray-30 transform gap-2"
               : "hidden"
           }
         >
-          <div className="flex gap-1 flex-col bg-white px-9 rounded-xl py-8">
+          <div className="flex gap-1 flex-col bg-white px-9 opacity-0 rounded-xl py-8">
             {/* ✔ Correct ref here */}
             <input
               ref={inputRef}
@@ -96,11 +81,12 @@ const App = () => {
         <Header />
         <Footer />
 
-        <img
+        <Dogs />
+        {/* <img
           src={data.message}
           alt="Random Dog"
           className="mt-4 h-50 w-50 object-cover rounded-sm ml-10"
-        />
+        /> */}
         <Stopwatch />
         <Blog />
       </UserContext.Provider>
