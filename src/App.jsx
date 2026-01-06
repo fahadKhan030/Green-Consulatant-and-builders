@@ -7,6 +7,7 @@ import Footer from "./Footer/Footer.jsx";
 import ThemeProvider from "./Theme/ThemeProvider.jsx";
 import Stopwatch from "./StopWatch/ShopWatch.jsx";
 import Dogs from "./Suspence/Dogs.jsx";
+import TextAni from "./Animation/TextAni.jsx";
 
 const App = () => {
   // const [data, setData] = useState(null);
@@ -81,6 +82,7 @@ const App = () => {
         <Header />
         <Footer />
 
+        <TextAni />
         <Dogs />
         {/* <img
           src={data.message}
