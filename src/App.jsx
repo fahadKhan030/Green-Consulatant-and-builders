@@ -8,6 +8,7 @@ import ThemeProvider from "./Theme/ThemeProvider.jsx";
 import Stopwatch from "./StopWatch/ShopWatch.jsx";
 import Dogs from "./Suspence/Dogs.jsx";
 import TextAni from "./Animation/TextAni.jsx";
+import Timeline from "./Animation/Timeline.jsx";
 
 const App = () => {
   // const [data, setData] = useState(null);
@@ -46,6 +47,7 @@ const App = () => {
         value={{ Name }}
         className="flex flex-col items-center justify-center mt-10"
       >
+        {/* <Dogs /> */}
         {/* Modal */}
         <div
           className={
@@ -83,7 +85,7 @@ const App = () => {
         <Footer />
 
         <TextAni />
-        <Dogs />
+        <Timeline />
         {/* <img
           src={data.message}
           alt="Random Dog"
