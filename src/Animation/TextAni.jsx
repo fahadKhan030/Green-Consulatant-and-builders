@@ -9,7 +9,7 @@ export default function SnapExample() {
   const panelsRef = useRef([]);
 
   useEffect(() => {
-    gsap.to(panelsRef.current, {
+    gsap.to(panelsRef.current, {  
       xPercent: -100 * (panelsRef.current.length - 1),
       ease: "none",
       scrollTrigger: {
