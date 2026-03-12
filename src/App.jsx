@@ -9,6 +9,7 @@ import Stopwatch from "./StopWatch/ShopWatch.jsx";
 import Dogs from "./Suspence/Dogs.jsx";
 import TextAni from "./Animation/TextAni.jsx";
 import Timeline from "./Animation/Timeline.jsx";
+import CounterApp from "./reduxWork/counter/CounterApp.jsx";
 
 const App = () => {
   // const [data, setData] = useState(null);
@@ -83,6 +84,7 @@ const App = () => {
 
         <Header />
         <Footer />
+        <CounterApp />
 
         <TextAni />
         <Timeline />
